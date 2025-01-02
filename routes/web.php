@@ -1,23 +1,26 @@
 <?php
 
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailArtikelController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('admin/home');
+    return view('admin/dashboard');
 });
-Route::get('/home', function () {
-    return view('admin/home');
-});
+
+Route::get('/dashboard',[DashboardController::class, 'dashboard']);
 Route::get('/about', function () {
     return view('admin/about');
 })->name('about');
 
 Route::get('/login', function () {
-    return view('login');
-});
+    return view('auth.login');
+})->name('login');
+Route::post('/login',[AuthController::class,'login']);
+Route::get('/logout',[AuthController::class,'logout']);
 
 
 // Route::get('/author', [AuthorController] ,function () {
