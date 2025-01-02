@@ -24,6 +24,7 @@
                     Halaman Tambah
                 </h1>
             </div>
+
             <form action="{{ route('admin.submitAuthor') }}" class="max-w-md ml-2" method="post">
                 @csrf
                 <div class="mb-5">
