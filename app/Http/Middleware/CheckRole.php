@@ -22,7 +22,7 @@ class CheckRole
         if ($user && in_array($user->role,$roles)) {
             return $next($request);
         }
-        // abort(403);
-        return redirect('/login');
+         abort(403);
+        //return redirect('/login');
     }
 }

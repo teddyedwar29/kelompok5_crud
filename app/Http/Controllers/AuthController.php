@@ -13,12 +13,17 @@ class AuthController extends Controller
             'password' => 'required|max:50',
         ]);
         if(Auth::attempt($request->only('email','password'),$request->remember)) {
+            if(Auth::user()->role == 'user') {
+                return redirect('/user');
+            }
             return redirect('/dashboard');
         }
         return back()->with('failed','Email atau Password salah!');
     }
     public function logout() {
-        Auth::logout(Auth::user());
+        if (Auth::logout(Auth::user()->role == 'user' ) ) {
+            return redirect('/guest');
+        };
         return redirect('/login');
     }
 }

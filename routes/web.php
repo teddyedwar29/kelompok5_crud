@@ -5,10 +5,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailArtikelController;
+use App\Http\Controllers\UserPageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth/login');
+    return view('guest.homeGuest');
 });
 
 Route::get('/login', function () {
@@ -16,6 +17,13 @@ Route::get('/login', function () {
 })->name('login');
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/logout',[AuthController::class,'logout']);
+
+
+Route::get('/guest', [UserPageController::class,'homeGuest'])->name('guest.homeGuest');
+
+Route::group(['middleware' => ['auth', 'check_role:user']], function(){
+    Route::get('/user', [UserPageController::class,'userPage'])->name('user.user');
+});
 
 
 Route::group(['middleware' => ['auth', 'check_role:admin']], function(){
