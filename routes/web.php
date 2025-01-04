@@ -62,7 +62,7 @@ Route::group(['middleware' => ['auth', 'check_role:admin']], function(){
     Route::post('/detailartikel/submit', [DetailArtikelController::class,'submitDetailArtikel'])->name('admin.submitDetailArtikel'); 
     Route::delete('/detailartikel/delete/{id}', [DetailArtikelController::class,'deleteDetailArtikel'])->name('admin.deleteDetailArtikel');
     Route::get('/detailartikel/edit/{id}', [DetailArtikelController::class,'editDetailArtikel'])->name('admin.editDetailArtikel');
-    Route::post('/detailartikel/update/{id}', [ArtikelController::class,'updateDetailArtikel'])->name('admin.updateDetailArtikel'); 
+    Route::post('/detailartikel/update/{id}', [DetailArtikelController::class,'updateDetailArtikel'])->name('admin.updateDetailArtikel'); 
 
 });
 

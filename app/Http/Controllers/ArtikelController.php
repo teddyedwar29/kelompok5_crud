@@ -30,7 +30,7 @@ class ArtikelController extends Controller
         $artikel->delete();
 
         // redirect dengan pesan sukses 
-        return redirect()->route('admin.artikel')->with('success', 'Data Berhasil Dihapus'); 
+        return redirect()->route('admin.artikel')->with('pesan', 'Data Berhasil Dihapus'); 
     }
 
     // logic edit artikel
@@ -45,7 +45,7 @@ class ArtikelController extends Controller
         $data = ArtikelModel::findOrFail($id); // cari data berdasarkan id
         $data->update($validateData); // Perbarui Data
         
-        session()->flash('pesan','Data Berhasil diperbaruih');
+        session()->flash('pesan','Data Berhasil diperbarui');
         return redirect()->route('admin.artikel');
     }
 }

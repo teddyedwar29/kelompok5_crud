@@ -25,7 +25,8 @@
                     Halaman Edit Detail Artikel
                 </h1>
             </div>
-            <form action="{{ route('admin.updateDetailArtikel') }}" class="max-w-md ml-2" method="post">
+            <form action="{{ route('admin.updateDetailArtikel', $data->id_artikel) }}" class="max-w-md ml-2"
+                method="post">
                 @csrf
                 <div class="mb-5">
                     <label for="id_artikel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Id
