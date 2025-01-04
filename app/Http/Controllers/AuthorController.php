@@ -41,7 +41,7 @@ class AuthorController extends Controller
         $data = AuthorModel::findOrFail($id); // cari data berdasarkan id
         $data->update($validateData); // Perbarui Data
         
-        session()->flash('pesan','Data Berhasil diperbaruih');
+        session()->flash('pesan','Data Berhasil diperbarui');
         return redirect()->route('admin.author');
     }
 
@@ -53,7 +53,7 @@ class AuthorController extends Controller
         $author->delete();
 
         // redirect dengan pesan sukses 
-        return redirect()->route('admin.author')->with('success', 'Data Berhasil Dihapus'); 
+        return redirect()->route('admin.author')->with('pesan', 'Data Berhasil Dihapus'); 
     }
 
 }

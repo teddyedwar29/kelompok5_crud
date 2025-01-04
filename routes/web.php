@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailArtikelController;
+use App\Http\Controllers\GuestController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPageController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +22,15 @@ Route::get('/logout',[AuthController::class,'logout']);
 
 
 Route::get('/guest', [UserPageController::class,'homeGuest'])->name('guest.homeGuest');
+Route::get('/guest/author', [GuestController::class,'author'])->name('guest.author');
+Route::get('/guest/artikel', [GuestController::class,'artikel'])->name('guest.artikel');
+Route::get('/guest/detailartikel', [GuestController::class,'detailArtikel'])->name('guest.detailArtikel');
 
 Route::group(['middleware' => ['auth', 'check_role:user']], function(){
     Route::get('/user', [UserPageController::class,'userPage'])->name('user.user');
+    Route::get('/user/author', [UserController::class,'author'])->name('user.author');
+    Route::get('/user/artikel', [UserController::class,'artikel'])->name('user.artikel');
+    Route::get('/user/detailartikel', [UserController::class,'detailArtikel'])->name('user.detailArtikel');
 });
 
 
