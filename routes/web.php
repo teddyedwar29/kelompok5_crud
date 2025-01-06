@@ -5,7 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailArtikelController;
+use App\Http\Controllers\EditorController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\IssueController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPageController;
 use Illuminate\Support\Facades\Route;
@@ -63,7 +65,20 @@ Route::group(['middleware' => ['auth', 'check_role:admin']], function(){
     Route::delete('/detailartikel/delete/{id}', [DetailArtikelController::class,'deleteDetailArtikel'])->name('admin.deleteDetailArtikel');
     Route::get('/detailartikel/edit/{id}', [DetailArtikelController::class,'editDetailArtikel'])->name('admin.editDetailArtikel');
     Route::post('/detailartikel/update/{id}', [DetailArtikelController::class,'updateDetailArtikel'])->name('admin.updateDetailArtikel'); 
-
+    
+    //route buat editor
+    Route::get('/editor', [EditorController::class,'tampilEditor'])->name('admin.editor'); 
+    Route::get('/editor/tambah', [EditorController::class,'tambahEditor'])->name('admin.tambahEditor'); 
+    Route::post('/editor/submit', [EditorController::class,'submitEditor'])->name('admin.submitEditor'); 
+    Route::delete('/editor/delete/{id}', [EditorController::class,'deleteEditor'])->name('admin.deleteEditor');
+    Route::get('/editor/edit/{id}', [EditorController::class,'editEditor'])->name('admin.editEditor');
+    Route::post('/editor/update/{id}', [EditorController::class,'updateEditor'])->name('admin.updateEditor'); 
+    
+    // route buat issue
+    Route::get('/issue', [IssueController::class,'tampil'])->name('admin.issue'); 
+    
+    // route buat review
+    Route::get('/review', [IssueController::class,'tampil'])->name('admin.review'); 
 });
 
 
