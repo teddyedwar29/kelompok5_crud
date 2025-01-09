@@ -79,6 +79,7 @@ Route::group(['middleware' => ['auth', 'check_role:admin']], function(){
     
     // route buat review
     Route::get('/review', [IssueController::class,'tampil'])->name('admin.review'); 
+    Route::get('/review/tambah', [IssueController::class,'tambah'])->name('admin.tambah'); 
 });
 
 
